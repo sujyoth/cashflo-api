@@ -14,7 +14,7 @@ describe('Cashflo Microservice', () => {
 
   // Mock user authentication
   describe('Mock Authentication', () => {
-    it('should not log user in if username and password do not meet requirements', (done) => {
+    it('should not return token if username and password do not meet requirements', (done) => {
       request.agent(app)
           .post('/api/users/login')
           .send({username: 'aditya', password: ''})
@@ -24,7 +24,7 @@ describe('Cashflo Microservice', () => {
           });
     });
 
-    it('should accept a username/password and return a signed JWT', (done) => {
+    it('should accept username and password and return a signed JWT', (done) => {
       request.agent(app)
           .post('/api/users/login')
           .send(loginDetails)
@@ -38,7 +38,7 @@ describe('Cashflo Microservice', () => {
   });
 
   describe('Thumbnail creation', () => {
-    it('should accept a public image url and return a resized image', (done) => {
+    it('should accept an image url and return a resized image', (done) => {
       request.agent(app)
           .post('/api/create-thumbnail')
           .set('token', token)
@@ -50,7 +50,7 @@ describe('Cashflo Microservice', () => {
       done();
     });
 
-    it('should not process image if token is invalid', (done) => {
+    it('should not resize image if the token is invalid', (done) => {
       request.agent(app)
           .post('/api/create-thumbnail')
           .set('token', 'wrongtoken')
@@ -62,7 +62,7 @@ describe('Cashflo Microservice', () => {
       done();
     });
 
-    it('should not process image if url is invalid', (done) => {
+    it('should not resize image if the url is invalid', (done) => {
       request.agent(app)
           .post('/api/create-thumbnail')
           .set('token', token)
