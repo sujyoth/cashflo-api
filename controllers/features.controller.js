@@ -1,5 +1,5 @@
-const { body, validationResult } = require('express-validator');
 const download = require('image-downloader');
+const { fileExtension } = require('../middleware/tokenMiddleware');
 
 const imageTypes = ['jpg', 'tif', 'gif', 'png', 'svg'];
 

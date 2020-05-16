@@ -1,14 +1,12 @@
 const jwt = require('jsonwebtoken');
 const { body, validationResult } = require('express-validator');
-const { sanitizeBody } = require('express-validator');
-
+require('dotenv').config();
 
 exports.user_login_post = [
   // Validate input fields. Trim spaces around username
-  body('username', 'Username required.').isLength({ min: 3 }).trim(),
+  body('username', 'Username is required.').isLength({ min: 1 }).trim(),
+  body('username', 'Username must contain at least 3 characters.').isLength({ min: 3 }).trim(),
   body('password', 'Password must contain at least 6 characters.').isLength({ min: 6 }),
-  // Sanitize body with the wildcard.
-  sanitizeBody('*'),
 
   // Process the request after validating.
   (req, res) => {
