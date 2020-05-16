@@ -1,5 +1,5 @@
 const express = require('express');
-const featureController = require('../controllers/features.controller');
+const featureController = require('../controllers/feature.controller');
 const {verifyToken} = require('../middleware/middleware');
 
 const router = express.Router();
