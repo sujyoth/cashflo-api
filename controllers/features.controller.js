@@ -24,8 +24,7 @@ exports.create_thumbnail_post = (req, res, next) => {
     // Download image from the url and save in selected destination in options.
     download.image(options)
         .then(({filename}) => {
-        // Resize image to 50x50 and save to desired location.
-        // Return conversion status to user.
+        // Resize image to 50x50 and save to public/images/resized
           sharp(filename)
               .resize(50, 50)
               .toFile(`${resizeFolder}output.${imageUrlExt}`, (err) => {
