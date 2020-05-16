@@ -42,43 +42,43 @@ describe('Cashflo Microservice', () => {
         });
   });
 
-  describe('Thumbnail creation', () => {
+  describe('Thumbnail generation', () => {
     it('should accept an image url and return the generated thumbnail',
         (done) => {
           request.agent(app)
-              .post('/api/create-thumbnail')
+              .post('/api/generate-thumbnail')
               .set('token', token)
               .send({imageUrl: imageUrl})
               .end((err, res) => {
                 expect(res.statusCode).to.equal(200);
                 expect(res.body.converted).to.equal(true);
+                done();
               });
-          done();
         });
 
     it('should not resize image if the token is invalid',
         (done) => {
           request.agent(app)
-              .post('/api/create-thumbnail')
+              .post('/api/generate-thumbnail')
               .set('token', 'random_token')
               .send({imageUrl: imageUrl})
               .end((err, res) => {
                 expect(res.statusCode).to.equal(401);
                 expect(res.body.authorized).to.equal(false);
+                done();
               });
-          done();
         });
 
     it('should not resize image if the url is invalid',
         (done) => {
           request.agent(app)
-              .post('/api/create-thumbnail')
+              .post('/api/generate-thumbnail')
               .set('token', token)
               .send({imageUrl: invalidImageUrl})
               .end((err, res) => {
                 expect(res.statusCode).to.equal(400);
+                done();
               });
-          done();
         });
   });
 });

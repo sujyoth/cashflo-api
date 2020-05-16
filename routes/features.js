@@ -5,8 +5,8 @@ const {verifyToken} = require('../middleware/middleware');
 const router = express.Router();
 
 // Route to create image thumbnail.
-router.post('/create-thumbnail',
+router.post('/generate-thumbnail',
     verifyToken,
-    featureController.create_thumbnail_post);
+    featureController.generate_thumbnail_post);
 
 module.exports = router;

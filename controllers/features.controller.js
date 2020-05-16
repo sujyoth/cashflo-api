@@ -5,7 +5,7 @@ const sharp = require('sharp');
 const imageTypes = ['jpg', 'tif', 'gif', 'png', 'svg'];
 
 // Resize image on post.
-exports.create_thumbnail_post = (req, res, next) => {
+exports.generate_thumbnail_post = (req, res, next) => {
   // Save image url and extension.
   const {imageUrl} = req.body;
   // Save image extension.
