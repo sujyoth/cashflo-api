@@ -26,7 +26,7 @@ exports.user_login_post = [
       // Convert username to lowercase for db consistency
       const username = req.body.username.toLowerCase();
       // Create a token for the user.
-      const token = jwt.sign({username: username}, process.env.jwtSecret,
+      const token = jwt.sign({username: username}, process.env.secretKey,
           {expiresIn: 21600});
       // Set token in header
       req.headers['token'] = token;

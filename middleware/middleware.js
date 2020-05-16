@@ -16,7 +16,7 @@ exports.verifyToken = (req, res, next) => {
         .json({authorized: false, error: 'Token is required.'});
   }
   // Verify token
-  jwt.verify(token, process.env.jwtSecret, (err, decoded) => {
+  jwt.verify(token, process.env.secretKey, (err, decoded) => {
     if (err) {
       return res
           .status(401)
