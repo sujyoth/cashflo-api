@@ -16,3 +16,5 @@ app.use('/api/users', users);
 app.use('/api', api);
 
 app.listen(3000);
+
+module.exports = app;

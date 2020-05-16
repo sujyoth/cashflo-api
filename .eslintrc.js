@@ -17,5 +17,6 @@ module.exports = {
   },
   'rules': {
     'new-cap': 'off',
+    'max-len': 'warn',
   },
 };
