@@ -2,9 +2,9 @@
   "name": "cashflo-sujyoth",
   "version": "1.0.0",
   "description": "A simple stateless micro-service in Nodejs, with two major functionalities: Authentication and Thumbnail Generation",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "nodemon app.js",
     "pretest": "eslint --ignore-path .gitignore .",
     "test": "mocha"
   },

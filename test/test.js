@@ -1,7 +1,7 @@
 const {expect} = require('chai');
 const request = require('supertest');
 
-const app = require('../index');
+const app = require('../app');
 
 describe('Cashflo Microservice', () => {
   // Create dummy login data
