@@ -1,12 +1,25 @@
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-// Get the extension of a url/file
+/**
+ * Takes a url and returns its extension
+ * @param {string} url
+ *
+ * @return {string} the obtained extension
+ */
 exports.fileExtension = (url) => {
   return url.split('.').pop().split(/\#|\?/)[0];
 };
 
-// Verify token
+/**
+ * Verifies token with secretKey
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ * @param {Function} next - Express next middleware function,
+ *                          called on successful verification
+ *
+ * @return {JSON} returned if the verification fails
+ */
 exports.verifyToken = (req, res, next) => {
   const {token} = req.headers;
   // Return forbidden status if the token is not available
