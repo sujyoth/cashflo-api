@@ -5,7 +5,7 @@ const app = require('../app');
 
 describe('Cashflo Microservice', () => {
   // Create dummy login data
-  const loginDetails = {username: 'someone', password: 'awesome'};
+  const loginDetails = {username: 'sujyoth', password: '135d211'};
   // Create token variable to save user token
   let token;
   // Set various variables to be used in the application
@@ -17,7 +17,7 @@ describe('Cashflo Microservice', () => {
     it('should not log user in if username and password do not meet requirements', (done) => {
       request.agent(app)
           .post('/api/users/login')
-          .send({username: 'someone', password: ''})
+          .send({username: 'aditya', password: ''})
           .end((err, res) => {
             expect(res.statusCode).to.equal(400);
             done();
