@@ -8,7 +8,7 @@ const imageTypes = ['jpg', 'tif', 'gif', 'png', 'svg'];
 exports.create_thumbnail_post = (req, res, next) => {
   // Save image url and extension.
   const {imageUrl} = req.body;
-  // Save image extension. Convert to lowercase if in caps.
+  // Save image extension.
   const imageUrlExt = fileExtension(imageUrl).toLowerCase();
 
   // If image url extension is a type of image file, proceed to resize.
@@ -31,6 +31,7 @@ exports.create_thumbnail_post = (req, res, next) => {
                 if (err) {
                   return next(err);
                 }
+                // Generate path of resized image for response.
                 const imgRoute = './images/resized/output.' + imageUrlExt;
                 return res.json({
                   converted: true,
