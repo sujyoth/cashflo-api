@@ -28,6 +28,7 @@ exports.verifyToken = (req, res, next) => {
         .status(403)
         .json({authorized: false, error: 'Token is required.'});
   }
+
   // Verify token
   jwt.verify(token, process.env.secretKey, (err, decoded) => {
     if (err) {
@@ -36,6 +37,7 @@ exports.verifyToken = (req, res, next) => {
           .send({authorized: false,
             error: 'Verification failed or token has expired.'});
     }
+
     // No error so save decoded token into req.user and go to next process.
     req.user = decoded;
     next();

@@ -4,18 +4,19 @@ const request = require('supertest');
 const app = require('../app');
 
 describe('Cashflo Microservice', () => {
-  // Create dummy login data
+  // Create dummy login data.
   const loginDetails = {
     username: 'random_username',
     password: 'random_password',
   };
-  // Create token variable to save user token
+
+  // Create token variable to save generated token.
   let token;
-  // Set various variables to be used in the application
+
+  // Create one valid and invalid image URL each.
   const imageUrl = 'https://i.ibb.co/W2KDcny/home.png';
   const invalidImageUrl = 'https://i.ibb.co/W2KDcny/home';
 
-  // Mock user authentication
   describe('Mock Authentication', () => {
     it('should not return token if username and password are invalid',
         (done) => {

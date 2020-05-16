@@ -7,6 +7,7 @@ const router = express.Router();
 // Route to create image thumbnail.
 router.post('/generate-thumbnail',
     verifyToken,
-    featureController.generate_thumbnail_post);
+    featureController.generate_thumbnail_post,
+);
 
 module.exports = router;
