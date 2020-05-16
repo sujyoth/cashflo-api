@@ -30,8 +30,9 @@ exports.create_thumbnail_post = (req, res, next) => {
           .resize(50, 50)
           .toFile(`${resizeFolder}output.${imageUrlExt}`, (err) => {
             if (err) { return next(err) }
+            const imgRoute = './images/resized/output.' + imageUrlExt;
             return res.json({
-              converted: true, user: req.user.username, success: 'Image has been resized', thumbnail: resizeFolder,
+              converted: true, user: req.user.username, success: 'Image has been resized', thumbnail: imgRoute,
             });
           });
       })
