@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 // Get the extension of a url/file
-// Credit for regular expression - https://stackoverflow.com/a/47767860/2377343
 exports.fileExtension = (url) => {
   return url.split('.').pop().split(/\#|\?/)[0];
 };

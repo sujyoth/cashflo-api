@@ -1,5 +1,5 @@
 const download = require('image-downloader');
-const {fileExtension} = require('../middleware/tokenMiddleware');
+const {fileExtension} = require('../middleware/middleware');
 const sharp = require('sharp');
 
 const imageTypes = ['jpg', 'tif', 'gif', 'png', 'svg'];
