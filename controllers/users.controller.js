@@ -11,7 +11,8 @@ exports.user_login_post = [
       .isLength({min: 3})
       .trim(),
   body('password', 'Password must contain at least 6 characters.')
-      .isLength({min: 6}),
+      .isLength({min: 6})
+      .trim(),
 
   // Process the request after validating.
   (req, res) => {
@@ -27,7 +28,7 @@ exports.user_login_post = [
       const username = req.body.username.toLowerCase();
       // Create a token for the user.
       const token = jwt.sign({username: username}, process.env.secretKey,
-          {expiresIn: 21600});
+          {expiresIn: '12h'});
       // Set token in header
       req.headers['token'] = token;
       res.status(200).send({user: username, authorized: true, token: token});
