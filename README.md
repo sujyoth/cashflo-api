@@ -34,15 +34,10 @@ npm install
 
 ## Unit Testing
 
-Unit testing is done using mochai.
+Unit testing is done using mocha.
 
 Run ```npm test``` from the application's root directory.
  
-
-## Logging
-
-All logs are saved in ```cashflo.log``` in the application's root.
-
 
 ## Built With
 
