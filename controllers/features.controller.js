@@ -1,14 +1,15 @@
 const download = require('image-downloader');
 const { fileExtension } = require('../middleware/tokenMiddleware');
+const sharp = require('sharp');
 
 const imageTypes = ['jpg', 'tif', 'gif', 'png', 'svg'];
 
 // Resize image on post.
 exports.create_thumbnail_post = (req, res, next) => {
   // Save image url and extension.
-  const { imageUrl } = req.body
+  const { imageUrl } = req.body;
   // Save image extension. Convert to lowercase if in caps.
-  const imageUrlExt = fileExtension(imageUrl).toLowerCase()
+  const imageUrlExt = fileExtension(imageUrl).toLowerCase();
 
   // If image url extension is a type of image file, proceed to resize.
   if (imageTypes.includes(imageUrlExt)) {
