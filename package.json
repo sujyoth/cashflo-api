@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon app.js",
     "pretest": "eslint --ignore-path .gitignore .",
-    "test": "mocha"
+    "test": "mocha --exit"
   },
   "author": "Sujyoth Karkera",
   "license": "ISC",
