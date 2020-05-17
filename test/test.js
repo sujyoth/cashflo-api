@@ -54,7 +54,7 @@ describe('Cashflo Microservice', () => {
         (done) => {
           request.agent(app)
               .post('/api/users/login')
-              .send({username: 'random_username', password: ''})
+              .send({username: 'as', password: 'sa'})
               .end((err, res) => {
                 expect(res.statusCode).to.equal(400);
                 done();
