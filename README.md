@@ -72,7 +72,7 @@ This request contains a public image URL. It downloads the image, resizes to 50x
 
 ## Unit Testing
 
-Unit tests have been made using mocha and chai.
+Unit tests have been made using mocha, chai and supertest.
 
 Run ```npm test``` from the application's root directory for testing.
 
