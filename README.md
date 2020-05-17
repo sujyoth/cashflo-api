@@ -8,8 +8,6 @@ A simple stateless microservice in Nodejs, with two major functionalities:
 
 ## Setup
 
-The API requires [Node.js](https://nodejs.org/en/download/)
-
 To get up and running: 
 
 **1.** Clone the repo.
