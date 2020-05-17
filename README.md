@@ -58,7 +58,8 @@ This request contains a public image URL. It downloads the image, resizes to 50x
  1. Set the request to **POST** and the url to _/api/generate-thumbnail_.
  2. Set the key ```imageUrl``` to a public image url.
  3. Since this is a secure route, for testing, you will have to set the token in the ```Header```. Set key as ```token``` and value as token you received from **Authentication**.
- 4. Image will be downloaded and converted to a thumbnail of size 50x50 pixels with a sample result as below:
+ 4. Hit ```Send```.
+ 5. The image will be downloaded and converted to a thumbnail of size 50x50 pixels with the following response:
  ```
  {
     "converted": true,
@@ -74,10 +75,9 @@ This request contains a public image URL. It downloads the image, resizes to 50x
 Unit tests have been made using mocha and chai.
 
 Run ```npm test``` from the application's root directory for testing.
- 
 
 ## Built With
 
  * [Node.js](https://nodejs.org)
  * [Express](https://expressjs.com/)
- * [Mocha](https://mochajs.org/) - For testing
+ * [Mocha](https://mochajs.org/)
