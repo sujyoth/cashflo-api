@@ -32,8 +32,7 @@ npm install
 npm start
 ```
 
-**5.**  **Important** Create a ```.env``` file and set ```secretKey``` to any secret phrase.
-
+The secret key used for token signing and verification has also been commited to the repo for convenience.
 
 ## Testing the API routes.
 
