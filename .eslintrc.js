@@ -16,6 +16,7 @@ module.exports = {
     'ecmaVersion': 11,
   },
   'rules': {
+    'linebreak-style': 'off',
     'new-cap': 'off',
     'max-len': 'warn',
   },
