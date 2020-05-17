@@ -18,7 +18,39 @@ describe('Cashflo Microservice', () => {
   const invalidImageUrl = 'https://i.ibb.co/W2KDcny/home';
 
   describe('Mock Authentication', () => {
-    it('should not return token if username and password are invalid',
+    it('should not return a token if username is missing',
+        (done) => {
+          request.agent(app)
+              .post('/api/users/login')
+              .send({password: 'random_password'})
+              .end((err, res) => {
+                expect(res.statusCode).to.equal(400);
+                done();
+              });
+        });
+
+    it('should not return a token if password is missing',
+        (done) => {
+          request.agent(app)
+              .post('/api/users/login')
+              .send({username: 'random_username'})
+              .end((err, res) => {
+                expect(res.statusCode).to.equal(400);
+                done();
+              });
+        });
+
+    it('should not return a token if username and password are missing',
+        (done) => {
+          request.agent(app)
+              .post('/api/users/login')
+              .end((err, res) => {
+                expect(res.statusCode).to.equal(400);
+                done();
+              });
+        });
+
+    it('should not return a token if username and password are invalid',
         (done) => {
           request.agent(app)
               .post('/api/users/login')
@@ -29,7 +61,7 @@ describe('Cashflo Microservice', () => {
               });
         });
 
-    it('should accept username and password and return a token',
+    it('should return a token if username and password are valid',
         (done) => {
           request.agent(app)
               .post('/api/users/login')
@@ -44,19 +76,6 @@ describe('Cashflo Microservice', () => {
   });
 
   describe('Thumbnail generation', () => {
-    it('should accept an image url and return the generated thumbnail',
-        (done) => {
-          request.agent(app)
-              .post('/api/generate-thumbnail')
-              .set('token', token)
-              .send({imageUrl: imageUrl})
-              .end((err, res) => {
-                expect(res.statusCode).to.equal(200);
-                expect(res.body.converted).to.equal(true);
-                done();
-              });
-        });
-
     it('should not resize image if the token is invalid',
         (done) => {
           request.agent(app)
@@ -70,7 +89,7 @@ describe('Cashflo Microservice', () => {
               });
         });
 
-    it('should not resize image if the url is invalid',
+    it('should not resize image if the URL is invalid',
         (done) => {
           request.agent(app)
               .post('/api/generate-thumbnail')
@@ -78,6 +97,32 @@ describe('Cashflo Microservice', () => {
               .send({imageUrl: invalidImageUrl})
               .end((err, res) => {
                 expect(res.statusCode).to.equal(400);
+                done();
+              });
+        });
+
+    it('should not resize image if the token and URL are invalid',
+        (done) => {
+          request.agent(app)
+              .post('/api/generate-thumbnail')
+              .set('token', 'random_token')
+              .send({imageUrl: invalidImageUrl})
+              .end((err, res) => {
+                expect(res.statusCode).to.equal(401);
+                expect(res.body.authorized).to.equal(false);
+                done();
+              });
+        });
+
+    it('should return the generated thumbnail if the URL and token are valid',
+        (done) => {
+          request.agent(app)
+              .post('/api/generate-thumbnail')
+              .set('token', token)
+              .send({imageUrl: imageUrl})
+              .end((err, res) => {
+                expect(res.statusCode).to.equal(200);
+                expect(res.body.converted).to.equal(true);
                 done();
               });
         });
