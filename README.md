@@ -8,8 +8,6 @@ A simple stateless microservice in Nodejs, with two major functionalities:
 
 ## Setup
 
-To get up and running: 
-
 **1.** Clone the repo.
 ```
 git clone https://github.com/sujyoth/cashflo-api.git
