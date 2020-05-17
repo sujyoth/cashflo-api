@@ -1,6 +1,6 @@
 # Stateless Microservice for Cashflo
 
-A simple stateless microservice in Nodejs, with two major functionalities -
+A simple stateless microservice in Nodejs, with two major functionalities:
 
  * Authentication
  * Image Thumbnail Generation
@@ -17,7 +17,7 @@ To get up and running:
 git clone https://github.com/sujyoth/cashflo-api.git
 ```
 
-**2.**  ```cd``` into repo. Use the same directory name(below) if you do not change it.
+**2.**  ```cd``` into the repo.
 ```
 cd cashflo-api
 ```
@@ -27,16 +27,54 @@ cd cashflo-api
 npm install
 ```
 
-**4.**  The app gets up and running on port 3000 with ```npm start```.
+**4.**  The app gets up and running on port 3000 with 
+```
+npm start
+```
 
-**5.**  **Important** Create a ```.env``` file and set ```secretKey``` to any secret phrase you want.
+**5.**  **Important** Create a ```.env``` file and set ```secretKey``` to any secret phrase.
+
+
+## Testing the API routes.
+
+The API routes can be tested using [Postman](https://www.getpostman.com/).
+
+### Authentication
+This is a mock authentication, so any username or password can be used to login.
+ 1. Set the request to **POST** and the url to _/api/users/login_. 
+ 2. In the **Body** for the Postman request, select **x-www-form-urlencoded**.
+ 3. You will be setting 2 keys (for username and password). Set the ```username``` key to any name (minimum of 3 characters). Set ```password``` to any password (minimum of 6 characters).
+ 4. Hit ```Send```. You will get a response in the below format:
+ ```
+ {
+    "user": "sujyoth",
+    "authorized": true,
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNpd3FzcWQiLCJpYXQiOjE1ODk2MjcwMDcsImV4cCI6MTU4OTY0ODYwN30.LfBvkPrlOhU4y5ScsfnIxsNN9Jk2guIrU23jYPJtokg"
+}
+ ```
+ 
+
+ ### Image Thumbnail Generation
+This request contains a public image URL. It downloads the image, resizes to 50x50 pixels, and returns the resulting thumbnail.
+ 1. Set the request to **POST** and the url to _/api/generate-thumbnail_.
+ 2. Set the key ```imageUrl``` to a public image url.
+ 3. Since this is a secure route, for testing, you will have to set the token in the ```Header```. Set key as ```token``` and value as token you received from **Authentication**.
+ 4. Image will be downloaded and converted to a thumbnail of size 50x50 pixels with a sample result as below:
+ ```
+ {
+    "converted": true,
+    "user": "sujyoth",
+    "success": "Image has been resized",
+    "thumbnail": "./images/resized/output.png"
+}
+```
 
 
 ## Unit Testing
 
-Unit testing is done using mocha.
+Unit tests have been made using mocha and chai.
 
-Run ```npm test``` from the application's root directory.
+Run ```npm test``` from the application's root directory for testing.
  
 
 ## Built With
@@ -44,8 +82,3 @@ Run ```npm test``` from the application's root directory.
  * [Node.js](https://nodejs.org)
  * [Express](https://expressjs.com/)
  * [Mocha](https://mochajs.org/) - For testing
-
-
-## Known Issues
-
- 1. Testing has not been completely implemented
