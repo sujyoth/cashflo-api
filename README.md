@@ -72,9 +72,9 @@ This request contains a public image URL. It downloads the image, resizes to 50x
 
 ## Unit Testing
 
-Unit testing is done using mocha.
+Unit tests have been made using mocha and chai.
 
-Run ```npm test``` from the application's root directory.
+Run ```npm test``` from the application's root directory for testing.
  
 
 ## Built With
