@@ -1,8 +1,8 @@
 # Stateless Microservice for Cashflo
 
-A stateless microservice in Node, with two major functionalities:
+A stateless microservice in Node.js for:
 
- * Authentication
+ * User Authentication
  * Image Thumbnail Generation
 
 
